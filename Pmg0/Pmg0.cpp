@@ -3,9 +3,9 @@ CSCI 240         Program 0     Spring 2016
 
 Programmer: Alex Boyle
 
-Section:
+Section: 0002
 
-Date Due: 
+Date Due: Jan 22
 
 Purpose: Compiler training
 ***************************************************************/
@@ -16,8 +16,10 @@ using namespace std;
 
 int main()
 {
-cout << "hello, world";
-
-return 0;
+	//output 
+	cout << "\nhello, world";
+	cout << "\ngoodbye for now..";
+	//return an int ending the program
+	return 0;
 }
 
