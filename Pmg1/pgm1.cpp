@@ -5,7 +5,7 @@ Programmer: Alex Boyle
 
 Section: 0002
 
-Date Due: Jan 29 2015
+Date Due: Jan 29 2016
 Purpose: This program calculates the amount of change due
 ***************************************************************/
 #include <iostream>
