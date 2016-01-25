@@ -42,9 +42,9 @@ int main()
 	//after the above math, you should be left with only 20 doller bills
 	int twe = temp;
 	//disp amounts
-	cout << "Twenties: " << twe/20 << endl;
-	cout << "Tens: " << ten/10 << endl;
-	cout << "Fives: " << five/5 << endl;
-	cout << "Ones: " << one << endl;
+	cout << "Twenties: " << twe/20 ;
+	cout << "\nTens: " << ten/10 ;
+	cout << "\nFives: " << five/5 ;
+	cout << "\nOnes: " << one ;
 	return 0;
 }
