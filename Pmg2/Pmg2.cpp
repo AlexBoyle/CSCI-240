@@ -22,10 +22,12 @@ const double pi = 3.14159;
 *
 *@return The area of the circle with the givin radius
 */
-double areaCircle(int rad)
+double areaCircle(double rad)
 {
 	return (pi * (rad * rad));
 }
+
+
 /*
 * Returns the area of a triangle with a givin base and height
 *
@@ -34,9 +36,7 @@ double areaCircle(int rad)
 *
 *@return The area of a triangle with a givin base and height
 */
-
-
-double areaTriangle( int base, int height)
+double areaTriangle(double base, double height)
 {
 	return (.5 * (base * height));
 }
@@ -50,7 +50,7 @@ double areaTriangle( int base, int height)
 *
 *@return The area of an elipse with a givin major and minor axis
 */
-double areaEclipse(int major, int minor)
+double areaEclipse(double major, double minor)
 {
 	return (pi * (major * minor));
 }
@@ -60,7 +60,7 @@ double areaEclipse(int major, int minor)
 int main() 
 {
 	int choice = 0;
-	
+	cout << fixed<< setprecision(2) ;
 	cout << "\nGeometry Calculator\n\n"
 		<< "1. Calculate the area of a circle\n"
 		<< "2. Calculate the area of a triangle\n"
@@ -69,6 +69,9 @@ int main()
 		<< "\nEnter your choice(1-4): ";
 	cin >> choice;
 	cout << endl;
+	
+	
+	//Depending on the user input from the lines above, the following switch statement will ask for the shapes mesurments and output the shapes area
 	switch(choice)
 	{
 		case 1:
@@ -76,7 +79,7 @@ int main()
 			int rad = 0;
 			cout << "\nEnter the radius: ";
 			cin >> rad;
-			cout << "\nThe area of the circle is " << setprecision(2) << fixed << areaCircle(rad);
+			cout << "\nThe area of the circle is "  << areaCircle(rad);
 			break;
 		}
 		case 2:
@@ -87,7 +90,7 @@ int main()
 			cin >> base;
 			cout << "\nEnter the height: ";
 			cin >> height;
-			cout << "\nThe area of the triangle is " << setprecision(2) << fixed << areaTriangle(base, height);
+			cout << "\nThe area of the triangle is " << areaTriangle(base, height);
 			break;
 		}
 		case 3:
@@ -98,14 +101,21 @@ int main()
 			cin >> major;
 			cout << "\nEnter the length of the Semi-Minor Axis: ";
 			cin >> minor;
-			cout << "\nThe area of the eclipse is " << setprecision(2) << fixed << areaEclipse(major, minor);
+			cout << "\nThe area of the eclipse is "  << areaEclipse(major, minor);
 			break;
 		}
 		case 4:
+		{
 			cout << "\n\nGoodbye!";
 			break;
+		}
 		default:
+		{
+			cout << "\n\nNot a valid Number";
 			break;
-}
+		}
+	}
+	cout << endl;
+	system("pause");
 return 0;
 }
