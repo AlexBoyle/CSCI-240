@@ -18,33 +18,41 @@ int main()
 	//var declaration
 	int amoundDue = 0;
 	int amoundRec = 0;
+	
+	
 	//get inputs from user
-	cout <<"Amount due on the bill: ";
-	cin >>  amoundDue;
-	cout <<endl << "Amount received from the customer: ";
-	cin >>  amoundRec;
+		cout <<"Amount due on the bill: ";
+		cin >>  amoundDue;
+		cout <<endl << "Amount received from the customer: ";
+		cin >>  amoundRec;
+		
+		
 	//get the amount of change to give back
-	int change = amoundRec - amoundDue;
-	cout << endl << "the Change due is: " << change << endl << endl;
-	int temp = change;
+		int change = amoundRec - amoundDue;
+		cout << endl << "the Change due is: " << change << endl << endl;
+		int bills = change;
+		
+		
 	//use modular math to remove every 20, 10 , and 5 doller bill so you are left with the dollar bills
-	int one = ((temp %20)%10)%5;
+		int one = ((bills %20)%10)%5;
 	//subtract the doller bills
-	temp -= one;
+		bills -= one;
 	//use modular math to remove every 20 and 10 dollar bills so you are left with the amount of money in five doller bills
-	int five = ((temp %20)%10);
+		int five = ((bills %20)%10);
 	//subtract the amount of th five doller bills
-	temp -= five;
+		bills -= five;
 	//use moduler math to remove every 20 doller bill so you are left with the amount in ten doller bills
-	int ten = (temp %20);
+		int ten = (bills %20);
 	//subtract the amount of ten doller bills
-	temp -= ten;
+		bills -= ten;
 	//after the above math, you should be left with only 20 doller bills
-	int twe = temp;
+		int twenty = bills;
+		
+		
 	//disp amounts
-	cout << "Twenties: " << twe/20 ;
-	cout << "\nTens: " << ten/10 ;
-	cout << "\nFives: " << five/5 ;
-	cout << "\nOnes: " << one ;
+		cout << "Twenties: " << twenty/20 ;
+		cout << "\nTens: " << ten/10 ;
+		cout << "\nFives: " << five/5 ;
+		cout << "\nOnes: " << one ;
 	return 0;
 }
