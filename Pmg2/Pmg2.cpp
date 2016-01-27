@@ -6,7 +6,7 @@ Programmer: Alex Boyle
 Section: 0002
 
 Date Due: Feb 5 2016
-Purpose: This program calculates the amount of change due
+Purpose: This program calculates Areas of shapes
 ***************************************************************/
 #include <iostream>
 #include <iomanip>
@@ -59,8 +59,8 @@ double areaEclipse(double major, double minor)
 
 int main() 
 {
+	cout << fixed<< setprecision(2) ;//format numeric output
 	int choice = 0;
-	cout << fixed<< setprecision(2) ;
 	cout << "\nGeometry Calculator\n\n"
 		<< "1. Calculate the area of a circle\n"
 		<< "2. Calculate the area of a triangle\n"
