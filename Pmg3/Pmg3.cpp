@@ -83,12 +83,6 @@ int main()
 		//if the user does not want to continue the main loop stops
 		if(charInput == 'n')
 			isRunning = false;
-		
-		
-		
-		
-		//reset values for next loop
-	
 	}
 	system("pause");
 	return 0;
