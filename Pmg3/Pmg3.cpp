@@ -20,22 +20,25 @@ int main()
 {
 	//Variables
 	bool isRunning = true;
-	char charInput = ' ';
-	int toss = -1;
-	long long input = -1;
-	double headPercent = 0;
-	double tailPercent = 0;
-	string headVis = "";
-	string tailVis = "";
+	
 	//setting up the random number genorator
 	srand(time(0));
 	//fomat the output for floats and doubles
 	cout << fixed << setprecision(1) ;
-	//this is the main loop that runs as long as "isRinning" equals true
+	//this is the main loop that runs as long as "isRunning" equals true
 	while(isRunning)
 	{
+		//variables
+		char charInput = ' ';
+		string headVis = "";
+		string tailVis = "";
+		int toss = -1;
+		double headPercent = 0;
+		double tailPercent = 0;
+		long long input = -1;
 		long long headsCount = 0;
 		long long tailsCount = 0;
+		//get the users number of flips
 		cout << "\nHow many times do you want to toss the coin?: ";
 		cin >> input;
 		//if the number givin is negitive, ask again for a number that is positive
@@ -85,11 +88,7 @@ int main()
 		
 		
 		//reset values for next loop
-		headsCount = 0;
-		tailsCount = 0;
-		headVis = "";
-		tailVis = "";
-		charInput == ' ';
+	
 	}
 	system("pause");
 	return 0;
