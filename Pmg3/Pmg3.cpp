@@ -22,7 +22,7 @@ int main()
 	bool isRunning = true;
 	char charInput = ' ';
 	int toss = -1;
-	int input = -1;
+	long long input = -1;
 	double headPercent = 0;
 	double tailPercent = 0;
 	string headVis = "";
@@ -34,18 +34,18 @@ int main()
 	//this is the main loop that runs as long as "isRinning" equals true
 	while(isRunning)
 	{
-		int headsCount = 0;
-		int tailsCount = 0;
+		long long headsCount = 0;
+		long long tailsCount = 0;
 		cout << "\nHow many times do you want to toss the coin?: ";
 		cin >> input;
 		//if the number givin is negitive, ask again for a number that is positive
 		while (input < 0)
 		{
 			cout << "\n\nNumber must be positive. How many times to you want to toss the coin?: ";
-			cin >> input;
+			cin >> input ;
 		}
 		///this for loop does all the coin flips
-		for (int i = 0; i < input; i ++)
+		for (long long i = 0; i < input; i ++)
 		{
 			toss = rand() % 2;
 			if (toss == 0)
