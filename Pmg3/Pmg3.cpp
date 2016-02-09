@@ -7,6 +7,7 @@ Section: 0002
 
 Date Due: Feb 12 2016
 Purpose: This program calculates coin flips
+I used long long's insted of ints because I wanted to see how long it would take to calculate large amounts of  coin flips; it takes a long time
 ***************************************************************/
 
 #include <iostream>

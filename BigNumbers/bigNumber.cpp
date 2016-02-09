@@ -95,26 +95,44 @@ string addition(string a, string b)
 }
 string multiply(string a, string b)
 {
-	int loops = 0;
-	vector<string> nums;
-	if(a.length() >= b.length())
- 		loops = a.length();
-	else 	
-		loops = b.length();
-	for(int i = 1; i <= loops; i ++){
-		
+	string end = "";
+	string temp[b.length()] ;
+	for(int i=b.length()-1;i>=0;i--)
+	{
+		int carry=0;
+		int result=0;
+		int rem=0;
+		temp [b.length()-i-1]= "";
+		for	(int j=a.length()-1;j>=0;j--)
+		{
+			result = toInt(a[j])*toInt(b[i]) + carry;
+			carry = result/10;
+			rem = result%10;
+			temp[b.length() - i-1]= toString(rem)+ temp[b.length() - i-1];
+		}
+		if(carry>0)
+		{
+			temp[b.length() -i-1] = toString(carry) + temp[b.length() -i -1];
+		}
 	}
+	for (int i = 0; i < b.length(); i ++){
+			end =  end + temp[b.length()-i-1];
+	}
+return end;
 }
 
 
 int main()
 {
+	while(true){
+		cout << endl<<endl<<endl;
 	string num0 = "";
 	string num1 = "";
 	cout << "num0: ";
 	cin >> num0;
 	cout<< "\nnum1: ";
 	cin >> num1;
-	cout << "the product is: \n";
 	cout << addition(num0,num1);
+	cout << endl <<  multiply(num0,num1);
+}
 }
