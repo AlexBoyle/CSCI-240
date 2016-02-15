@@ -1,5 +1,5 @@
 /***************************************************************
-CSCI 240         Program 1     Spring 2016
+CSCI 240         Program 3     Spring 2016
 
 Programmer: Alex Boyle
 
