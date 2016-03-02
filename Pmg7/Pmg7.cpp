@@ -34,7 +34,15 @@ int main()
 	cout << endl << userNum[0];	
 	return 0;
 }
-
+void sortArray( int array[], int numValues ){
+	int tempArr[numValues];
+	for (int i = 0; i < numValues; i ++)
+		tempArr[i] = array[i]
+		for (int j = i; j < numValues ; j ++){
+			if(tempArr[i] > array[j])
+				tempArr[i] = array[i + j];
+		}
+}
 void getWinners( int array[], int numValues ){
 		srand(time(0));
 		for(int i = 0; i < numValues; i ++)
