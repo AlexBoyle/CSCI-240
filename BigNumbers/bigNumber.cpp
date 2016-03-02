@@ -7,7 +7,13 @@
 #include <vector>
 using namespace std;
 
-
+string addZero(string a, int zero){
+	string end = a;
+	for (int i = 0; i < zero; i ++){
+		end = end + "0";
+	}
+	return end;
+}
 int toInt(char a){
 	if (a == '0')
 		return 0;
@@ -95,29 +101,23 @@ string addition(string a, string b)
 }
 string multiply(string a, string b)
 {
-	string end = "";
-	string temp[b.length()] ;
-	for(int i=b.length()-1;i>=0;i--)
-	{
-		int carry=0;
-		int result=0;
-		int rem=0;
-		temp [b.length()-i-1]= "";
-		for	(int j=a.length()-1;j>=0;j--)
-		{
-			result = toInt(a[j])*toInt(b[i]) + carry;
-			carry = result/10;
-			rem = result%10;
-			temp[b.length() - i-1]= toString(rem)+ temp[b.length() - i-1];
-		}
-		if(carry>0)
-		{
-			temp[b.length() -i-1] = toString(carry) + temp[b.length() -i -1];
+	int p = 0;
+	string end = "0";
+	string temp[b.length()* a.length()] ;
+	for(int i = b.length()-1; i > 0; i --){
+			int iZeros = b.length()-i-1;
+		for(int j = a.length()-1; j > 0; j--){
+			int jZeros = a.length()-j-1;
+			string tempn= "0";
+			for(int k = 0; k < toInt(addZero(a.at(j),jZeros)); k ++)
+				tempn = addition(tempn,addition(addZero(b.at(i),iZeros),addZeros(b.at(i),iZeros)));
+			temp.at(p) = tempn;
+			tempn = "";
+			p ++;
 		}
 	}
-	for (int i = 0; i < b.length(); i ++){
-			end =  end + temp[b.length()-i-1];
-	}
+	for (int i = 0; i < temp.length()-1; i ++)
+		end = addition(end,temp.at(i));
 return end;
 }
 
