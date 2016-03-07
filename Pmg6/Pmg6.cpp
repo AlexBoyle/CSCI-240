@@ -5,7 +5,7 @@ Programmer: Alex Boyle
 
 Section: 0006
 
-Date Due: Feb 
+Date Due: March 25
 Purpose: This program
 ***************************************************************/
 
@@ -14,22 +14,51 @@ Purpose: This program
 #include <cctype>
 #include <fstream>
 using namespace std;
+
+
+
+/***************************************************************
+Function:  isSpecial(char)
+
+Use: to check for special chars
+
+Arguments: char: the char being cheked to see if it contains a special char
+
+Returns: a bool true if the password is valid or false if the password is not valid
+***************************************************************/
+bool isSpecial( char ch ){
+	return (ch == '$' || ch == '%' || ch == '#' || ch == '*' );
+
+}
+
+
+/***************************************************************
+Function:  bool isMissing(string)
+
+Use: th check what each password is missing
+
+Arguments: string: The password being checked
+
+Returns: a bool true if the password is valid or false if the password is not valid
+***************************************************************/
 bool isMissing(string pass){
 	bool total;
 	bool alpha = true;
 	bool upper = true;
 	bool lower = true;
 	bool num = true;
+	//checks for problems in the password
 	for (int i = 0; i < pass.length() ; i ++){
-		if(pass.at(i) == '$' || pass.at(i) == '%' || pass.at(i) == '#' || pass.at(i) == '*' )
+		if(isSpecial(pass.at(i)))
 			alpha = false;
-		if(isupper(pass.at(i)))
+		else if(isupper(pass.at(i)))
 			upper = false;
-		if(islower(pass.at(i)))
+		else if(islower(pass.at(i)))
 			lower = false;
-		if(isdigit(pass.at(i)))
+		else if(isdigit(pass.at(i)))
 			num = false;
 	}
+	//this outputs the problems w/ the password
 	if(pass.length() < 5)
 		cout << "   Not enough characters" << endl;
 	if(alpha)
@@ -53,7 +82,8 @@ bool isMissing(string pass){
 int main(){
 	ifstream infile;        //input file stream variable
 	infile.open( "password.txt" );    //open the file for reading
-	string ch;
+	char ch = ' ';
+	string pass = "";
 	int numVal = 0;
 	int passwords = 0;
 	if( infile.fail() )       //if the input file failed to open
@@ -63,15 +93,19 @@ int main(){
 	}
 	while(infile)
 	{
+		while ((ch = infile.get()) != '\n' && infile) //loop to take in the password
+			pass += ch;
 	
-		infile >> ch;
-		cout << ch << endl;
-		if(isMissing(ch))
-			numVal ++;
-		cout << endl;
-		passwords ++;
+			cout << pass << endl;
+			if(isMissing(pass))//check if the password is missing anything
+				numVal ++;
+			cout << endl;
+			passwords ++;
+			ch = ' ';
+			pass = "";
 	}
-	infile.close();
+	infile.close();//close reader
+	//output
 	 cout << "Total Number of Passwords: " << passwords << endl ;
 	 cout << "  Valid:   " << numVal << endl;
 	 cout << "  Invalid: " <<passwords - numVal << endl;
