@@ -5,8 +5,8 @@ Programmer: Alex Boyle
 
 Section: 0005
 
-Date Due: Feb 
-Purpose: This program
+Date Due: March 11
+Purpose: This program calculates a car trip
 ***************************************************************/
 
 #include <iostream>
@@ -17,15 +17,114 @@ using namespace std;
 double const FLEET_AVG = 25.0;
 
 // Your function Prototypes go here
+/***************************************************************
+Function:  double getGallons()
+
+Use: This function gets the gallons of fule used in a trip from the user between the numbers 0 and 40
+
+Returns: the users inputed gallons
+***************************************************************/
 double getGallons();
+
+/***************************************************************
+Function:  double getMiles()
+
+Use: This function gets the miles traveled in a trip from the user between the numbers 0 and 800
+
+Returns: the users inputed miles 
+***************************************************************/
 double getMiles();
+
+/***************************************************************
+Function:  double getPricePerGallon()
+
+Use: This function gets the the price for a gallon of fule from the user between the numbers 2 and 7
+
+Returns: the users inputed cost
+***************************************************************/
 double getPricePerGallon();
+
+/***************************************************************
+Function:  double calcTripMileage(double, double) 
+
+Use: This function calculates the mileage for a single trip
+
+Arguments: double: the number of miles traveled 
+           double: the number of gallons of fuel used for the trip
+
+Returns: a double value that represents the number of miles per gallon
+***************************************************************/
 double calcTripMileage(double, double);
+
+/***************************************************************
+Function:  double calcTripCost(double, double)
+
+Use: This function calculates the cost of a trip
+
+Arguments: double: the price per gallon on the trip
+           double: the number of gallons of fuel used for the trip
+
+Returns: a double value that represents the cost of the trip
+***************************************************************/
 double calcTripCost(double, double);
+
+/***************************************************************
+Function:  double calcTripCost(double, double)
+
+Use: This function calculates the cost per mile of a trip
+
+Arguments: double: total cost of the trip
+           double: the number of miles traveled for the trip
+
+Returns: a double value that represents the cost per mile per trip
+***************************************************************/
 double calcTripCostPerMile(double, double);
+
+/***************************************************************
+Function:  double calcOverallMPG(double, double)
+
+Use: This function calculates the overall MPG
+
+Arguments: double: total miles traveled on the trip
+           double: the number of gallons of fuel used for the trip
+
+Returns: a double value that represents the overall MPG
+***************************************************************/
 double calcOverallMPG(double, double);
+
+/***************************************************************
+Function:  void showOneTrip(double, double, double)
+
+Use: This function diplays information for one trip
+
+Arguments: double: total trip miles
+           double: total trip cost
+		   double: total trip cost per mile
+
+***************************************************************/
 void showOneTrip(double, double, double);
+
+/***************************************************************
+Function:  void showTotals(double, double, double, double)
+
+Use: This function displays totals for data across multible trips 
+
+Arguments: double: total miles across all trips
+           double: total gallons of gas across all trips
+		   double: total cost of all trips
+		   double: overall MPG across all trips
+		   
+***************************************************************/
 void showTotals(double, double, double, double);
+
+/***************************************************************
+Function:  void showMileageComparison(double)
+
+Use: This function compairs the users MPG agents the avarage MPG
+
+Arguments: double: overall MPG across all trips
+
+***************************************************************/
 void showMileageComparison(double);
 
 
@@ -93,13 +192,7 @@ int main() {
 }
 //Your function definitions go here
 
-/***************************************************************
-Function:  double getGallons()
 
-Use: This function gets the gallons of fule used in a trip from the user between the numbers 0 and 40
-
-Returns: the users inputed gallons
-***************************************************************/
 double getGallons(){
 	cout << "Enter the number of gallons of fuel: ";
 	double input;
@@ -112,13 +205,7 @@ double getGallons(){
 	return input;
 }
 
-/***************************************************************
-Function:  double getMiles()
 
-Use: This function gets the miles traveled in a trip from the user between the numbers 0 and 800
-
-Returns: the users inputed miles 
-***************************************************************/
 double getMiles(){
 	cout << "Enter the number of miles: ";
 	double input;
@@ -130,13 +217,7 @@ double getMiles(){
 	return input;
 }
 
-/***************************************************************
-Function:  double getPricePerGallon()
 
-Use: This function gets the the price for a gallon of fule from the user between the numbers 2 and 7
-
-Returns: the users inputed cost
-***************************************************************/
 double getPricePerGallon(){
 	cout << "Enter the price per gallon: ";
 	double input;
@@ -148,16 +229,7 @@ double getPricePerGallon(){
 	return input;
 }
 
-/***************************************************************
-Function:  double calcTripMileage(double, double) 
 
-Use: This function calculates the mileage for a single trip
-
-Arguments: double: the number of miles traveled 
-           double: the number of gallons of fuel used for the trip
-
-Returns: a double value that represents the number of miles per gallon
-***************************************************************/
 double calcTripMileage(double miles, double gallons){
 	if(gallons == 0)
 		return 0;
@@ -168,30 +240,12 @@ double calcTripMileage(double miles, double gallons){
 		return temp;
 }
 
-/***************************************************************
-Function:  double calcTripCost(double, double)
 
-Use: This function calculates the cost of a trip
-
-Arguments: double: the price per gallon on the trip
-           double: the number of gallons of fuel used for the trip
-
-Returns: a double value that represents the cost of the trip
-***************************************************************/
 double calcTripCost(double pricePerGallon, double gallons){
 	return pricePerGallon * gallons;
 }
 
-/***************************************************************
-Function:  double calcTripCost(double, double)
 
-Use: This function calculates the cost per mile of a trip
-
-Arguments: double: total cost of the trip
-           double: the number of miles traveled for the trip
-
-Returns: a double value that represents the cost per mile per trip
-***************************************************************/
 double calcTripCostPerMile(double tripCost, double miles){
 	if(miles == 0)
 	return 0;
@@ -199,16 +253,7 @@ double calcTripCostPerMile(double tripCost, double miles){
 	return tripCost/miles;
 }
 
-/***************************************************************
-Function:  double calcOverallMPG(double, double)
 
-Use: This function calculates the overall MPG
-
-Arguments: double: total miles traveled on the trip
-           double: the number of gallons of fuel used for the trip
-
-Returns: a double value that represents the overall MPG
-***************************************************************/
 double calcOverallMPG(double totalMiles, double totalGallons){
 	if(totalGallons == 0)
 	return 0; 
@@ -216,33 +261,14 @@ double calcOverallMPG(double totalMiles, double totalGallons){
 	return totalMiles/totalGallons;
 }
 
-/***************************************************************
-Function:  void showOneTrip(double, double, double)
 
-Use: This function diplays information for one trip
-
-Arguments: double: total trip miles
-           double: total trip cost
-		   double: total trip cost per mile
-
-***************************************************************/
 void showOneTrip(double tripMileage, double tripCost, double tripCostPerMile){
 	cout << "Trip Mileage:            " <<fixed<< setprecision(2) << setw(5) << tripMileage << " mpg";
 	cout << "\nTrip Cost:              $" << setw(5) << tripCost;
 	cout << "\nTrip Cost per mile:     $" <<fixed<< setprecision(3) <<  setw(6) << tripCostPerMile << endl<< endl;	
 }
 
-/***************************************************************
-Function:  void showTotals(double, double, double, double)
 
-Use: This function displays totals for data across multible trips 
-
-Arguments: double: total miles across all trips
-           double: total gallons of gas across all trips
-		   double: total cost of all trips
-		   double: overall MPG across all trips
-		   
-***************************************************************/
 void showTotals(double totalMiles, double totalGallons, double totalCost, double overallMPG){
 	cout << "Total Miles:" <<fixed<< setprecision(2) << setw(11) << totalMiles;
 	cout << "\nTotal Gallons:" << setw(9) <<totalGallons;
@@ -250,14 +276,7 @@ void showTotals(double totalMiles, double totalGallons, double totalCost, double
 	cout << "\nOverall MPG:"	<< setw(11) <<overallMPG;
 }
 
-/***************************************************************
-Function:  void showMileageComparison(double)
 
-Use: This function compairs the users MPG agents the avarage MPG
-
-Arguments: double: overall MPG across all trips
-
-***************************************************************/
 void showMileageComparison(double overallMPG){
 	cout << "\n\nYour vehicle's mileage is greater than fleet average by " << overallMPG - FLEET_AVG << " mgp";
 }
