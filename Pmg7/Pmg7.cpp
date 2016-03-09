@@ -1,12 +1,12 @@
  /***************************************************************
-CSCI 240         Program 6     Spring 2016
+CSCI 240         Program 7    Spring 2016
 
 Programmer: Alex Boyle
 
-Section: 0006
+Section: 0007
 
 Date Due: April 1 2016 
-Purpose: This program
+Purpose: This program picks lottery tickets
 ***************************************************************/
 #include <iostream>
 #include <iomanip>
@@ -27,39 +27,71 @@ void printWinners( int [], int [], int);
 
 int main()
 {
-	int userNum[MAX_PICKS];
-	int winning[MAX_PICKS];
-	cout << "Pick 5 lottery\n\n";
-	getChoices(userNum, MAX_PICKS);
-	cout << endl << userNum[0];	
+	int input = 0;
+	cout << "Lottery Game\n3. Pick 3\n4. Pick 4\n5. Pick 5\n\nWhich game would you like to play? ";
+	cin>> input;
+	while (!(input >= 3 && input <= 5)){
+		cout<< "Please pick a number between 3 and 5: ";
+		cin >>input;
+	}
+	cout <<"\nPick " << input << " lottery\n\n";
+	
+	int userNum[input];
+	int winning[input];
+	getChoices(userNum, input);
+	for(int i = 0; i < input; i ++)
+		cout << userNum[i];
+	getWinners(winning,input);
+
+	sortArray(userNum,input);
+	
+	sortArray(winning,input);
+
+	printWinners(winning,userNum,input);
 	return 0;
 }
+
+
 void sortArray( int array[], int numValues ){
-	int tempArr[numValues];
-	for (int i = 0; i < numValues; i ++)
-		tempArr[i] = array[i]
+	int temp ;
+	int pos;
+	for (int i = 0; i < numValues; i ++){
+		temp = array[i];
+		pos = i;
 		for (int j = i; j < numValues ; j ++){
-			if(tempArr[i] > array[j])
-				tempArr[i] = array[i + j];
+			if(temp > array[j]){
+				temp = array[j];
+				pos = j;
+			}	
 		}
+		array[pos] = array[i];
+		array[i] = temp;
+		
+	}
 }
+
+
 void getWinners( int array[], int numValues ){
 		srand(time(0));
 		for(int i = 0; i < numValues; i ++)
 		{
 			int tempNum = (rand() %10) +1;
+			
 				while (isDuplicate(array,numValues,tempNum)){
-						int tempNum = ()rand() %10) +1;
+						tempNum = (rand() %10) +1;
+
 				}
 				array[i] = tempNum;
 		}
 }
+
+
 void getChoices( int array[], int numValues ){
 	int tempNum = 0;
 	for (int i = 0; i < numValues; i ++){
 		cout << "User choice " << i + 1 << ": ";
 		tempNum = getUserNum(MAX_CHOICE);
-		while (isDuplicate(array,numValues,tempNum)){
+		while (isDuplicate(array,numValues,tempNum) && i != 0){
 			cout << "you have already used this number, reenter: ";
 			tempNum = getUserNum(MAX_CHOICE);
 		}
@@ -134,3 +166,37 @@ while( userNum < 1 or userNum > upperBd )
 return userNum;
 }
 
+
+void printWinners( int winArray[], int userArray[], int numValues ){
+	cout << "\n\nThe winning numbers are   ";
+	for(int i = 0; i < numValues; i ++)
+		cout << winArray[i] << " ";
+	int match = 0;
+	for (int i = 0; i < numValues; i ++)
+		if(isDuplicate(userArray,numValues,winArray[i]))
+			match ++;
+	cout <<"\nYou matched " << match << " number(s).  You win ";
+	switch(match)
+	{
+		case 0:
+			cout << "$0.00";
+			break;
+		case 1:
+			cout << "$1.00";
+			break;
+		case 2:
+			cout << "$5.00";
+			break;
+		case 3:
+			cout << "$10.00";
+			break;
+		case 4:
+			cout << "$20.00";
+			break;
+		case 5:
+			cout << "$25.00";
+			break;
+	}
+	
+	
+}
