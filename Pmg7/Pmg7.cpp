@@ -18,36 +18,125 @@ using namespace std;
 
 //function prototypes
 
+
+/******************************************************************
+Function:  bool isDuplicate( int [], int, int )
+
+Use: This function determines if a value has already been placed
+     into an array
+
+Arguments: int []: the array holding all of the values
+           int: the number of values the array holds
+           int: the value to look for in the array
+
+Returns: a boolean value that represents whether the value was or
+         was not found in the array. true if the value is a
+		 duplicate. false if the value is not a duplicate
+******************************************************************/
 bool isDuplicate( int [], int, int );
+
+/******************************************************************
+Function:  int getUserNum( int )
+
+Use: This function gets a number from the user that is between 1
+     and an upper bound
+
+Arguments: int: the upper bound
+
+Returns: an integer between 1 and the upper bound, inclusive
+
+Note: This function will not display an initial prompt to the user.
+******************************************************************/
 int getUserNum( int );
+
+/******************************************************************
+Function:  void getWinners( int [], int)
+
+Use: generates the winning numbers for the lottery drawing 
+
+Arguments:  int[]: array where the winning numbers will be stored
+			int: the number of numbers being generated
+
+******************************************************************/
 void getWinners( int [], int);
+
+/******************************************************************
+Function:  void getChoices( int [], int)
+
+Use: Gets the user input numbers for the lottery play
+
+Arguments: 	int[]: array where the user input nimbers will be stored
+			int : number of numbers the the user has to input 
+
+******************************************************************/
 void getChoices( int [], int);
+
+/******************************************************************
+Function:  void sortArray( int [], int)
+
+Use: this function will sort an array from smalist to biggest
+
+Arguments:	int[]: this is the array that will be sorted
+			int: number of elements int the array
+
+******************************************************************/
 void sortArray( int [], int);
+
+/******************************************************************
+Function:  void printWinners( int [], int [], int)
+
+Use: this function checks if the user has picked any winning numbers
+
+Arguments: 	int[]: array of user inputs
+			int[]: array of winning numbers
+			int: number of elements in each array
+
+******************************************************************/
 void printWinners( int [], int [], int);
+
+
+bool playAgain = true;
 
 int main()
 {
+	while(playAgain){
+	
 	int input = 0;
-	cout << "Lottery Game\n3. Pick 3\n4. Pick 4\n5. Pick 5\n\nWhich game would you like to play? ";
+	cout << "\nLottery Game\n3. Pick 3\n4. Pick 4\n5. Pick 5\n\nWhich game would you like to play? ";
 	cin>> input;
 	while (!(input >= 3 && input <= 5)){
+		cout << input;
 		cout<< "Please pick a number between 3 and 5: ";
+		if(!cin){
+			string clear = "";
+			cin >> clear;
+		}
 		cin >>input;
 	}
+	system("cls");
 	cout <<"\nPick " << input << " lottery\n\n";
-	
+	//create arrays at the required size
 	int userNum[input];
 	int winning[input];
+	for (int i = 0; i < input;i ++){
+		userNum[i] = -1;
+		winning[i] = -1;
+	}
+	//get all nessasay numbers
 	getChoices(userNum, input);
-	for(int i = 0; i < input; i ++)
-		cout << userNum[i];
 	getWinners(winning,input);
-
+	//sort all numbers
 	sortArray(userNum,input);
-	
 	sortArray(winning,input);
 
 	printWinners(winning,userNum,input);
+	cout << "\n\n Do you want to try again(y or n): ";
+	string in = "";
+	cin >> in;
+	if(in.at(0) != 'y')
+		playAgain = false;
+	system("cls");
+}
 	return 0;
 }
 
@@ -68,6 +157,7 @@ void sortArray( int array[], int numValues ){
 		array[i] = temp;
 		
 	}
+
 }
 
 
@@ -89,30 +179,17 @@ void getWinners( int array[], int numValues ){
 void getChoices( int array[], int numValues ){
 	int tempNum = 0;
 	for (int i = 0; i < numValues; i ++){
-		cout << "User choice " << i + 1 << ": ";
+		cout << "\nUser choice " << i + 1 << ": ";
 		tempNum = getUserNum(MAX_CHOICE);
 		while (isDuplicate(array,numValues,tempNum) && i != 0){
 			cout << "you have already used this number, reenter: ";
 			tempNum = getUserNum(MAX_CHOICE);
 		}
 		array[i] = tempNum;
+		
 	}
 }
 
-/******************************************************************
-Function:  bool isDuplicate( int [], int, int )
-
-Use: This function determines if a value has already been placed
-     into an array
-
-Arguments: int []: the array holding all of the values
-           int: the number of values the array holds
-           int: the value to look for in the array
-
-Returns: a boolean value that represents whether the value was or
-         was not found in the array. true if the value is a
-		 duplicate. false if the value is not a duplicate
-******************************************************************/
 
 bool isDuplicate( int array[], int arraySize, int searchNum )
 {
@@ -131,18 +208,7 @@ for( int sub = 0; sub < arraySize; sub++ )
 return false;
 }
 
-/******************************************************************
-Function:  int getUserNum( int upperBd )
 
-Use: This function gets a number from the user that is between 1
-     and an upper bound
-
-Arguments: int: the upper bound
-
-Returns: an integer between 1 and the upper bound, inclusive
-
-Note: This function will not display an initial prompt to the user.
-******************************************************************/
 
 int getUserNum( int upperBd )
 {
@@ -200,3 +266,4 @@ void printWinners( int winArray[], int userArray[], int numValues ){
 	
 	
 }
+

@@ -6,7 +6,7 @@ Programmer: Alex Boyle
 Section: 0006
 
 Date Due: March 25
-Purpose: This program
+Purpose: This program checks if passwords are valid
 ***************************************************************/
 
 #include <iostream>
@@ -26,11 +26,7 @@ Arguments: char: the char being cheked to see if it contains a special char
 
 Returns: a bool true if the password is valid or false if the password is not valid
 ***************************************************************/
-bool isSpecial( char ch ){
-	return (ch == '$' || ch == '%' || ch == '#' || ch == '*' );
-
-}
-
+bool isSpecial( char);
 
 /***************************************************************
 Function:  bool isMissing(string)
@@ -41,39 +37,7 @@ Arguments: string: The password being checked
 
 Returns: a bool true if the password is valid or false if the password is not valid
 ***************************************************************/
-bool isMissing(string pass){
-	bool total;
-	bool alpha = true;
-	bool upper = true;
-	bool lower = true;
-	bool num = true;
-	//checks for problems in the password
-	for (int i = 0; i < pass.length() ; i ++){
-		if(isSpecial(pass.at(i)))
-			alpha = false;
-		else if(isupper(pass.at(i)))
-			upper = false;
-		else if(islower(pass.at(i)))
-			lower = false;
-		else if(isdigit(pass.at(i)))
-			num = false;
-	}
-	//this outputs the problems w/ the password
-	if(pass.length() < 5)
-		cout << "   Not enough characters" << endl;
-	if(alpha)
-		cout << "   Missing special character" << endl;
-	if(upper)
-		cout << "   Missing Uppercase letter" << endl;
-	if(lower)
-		cout << "   Missing lowercase letter" << endl;
-	if(num)
-		cout << "   Missing digit" << endl;
-	total = !(alpha || upper || lower || num || (pass.length() < 5));
-	if(total)
-		cout << "  Valid password" << endl;
-	return total;
-}
+ bool isMissing(string);
 
 
 
@@ -110,4 +74,49 @@ int main(){
 	 cout << "  Valid:   " << numVal << endl;
 	 cout << "  Invalid: " <<passwords - numVal << endl;
 	return 0;
+}
+
+
+
+
+
+bool isSpecial( char ch ){
+	return (ch == '$' || ch == '%' || ch == '#' || ch == '*' );
+
+}
+
+
+bool isMissing(string pass){
+	bool total;
+	bool alpha = true;
+	bool upper = true;
+	bool lower = true;
+	bool num = true;
+	for (int i = 0; i < pass.length() ; i ++)	//checks for problems in the password
+	{
+		if(isSpecial(pass.at(i)))
+			alpha = false;
+		else if(isupper(pass.at(i)))
+			upper = false;
+		else if(islower(pass.at(i)))
+			lower = false;
+		else if(isdigit(pass.at(i)))
+			num = false;
+	}
+	
+	//this if group outputs the problems w/ the password
+	if(pass.length() < 5)
+		cout << "   Not enough characters" << endl;
+	if(alpha)
+		cout << "   Missing special character" << endl;
+	if(upper)
+		cout << "   Missing Uppercase letter" << endl;
+	if(lower)
+		cout << "   Missing lowercase letter" << endl;
+	if(num)
+		cout << "   Missing digit" << endl;
+	total = !(alpha || upper || lower || num || (pass.length() < 5));
+	if(total)
+		cout << "  Valid password" << endl;
+	return total;
 }
