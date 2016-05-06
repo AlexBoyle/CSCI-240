@@ -1,7 +1,18 @@
 /***************************************************************
-CSCI 240         Program 9     Spring 2016
+CSCI 240         Program 9   Spring 2016
 
-Test the Die class
+Programmer: Alex Boyle
+
+Section: 0009
+
+
+Note:
+	- Ludum dare game jam entry:
+		http://ludumdare.com/compo/ludum-dare-35/?action=preview&uid=46816
+
+
+
+Purpose: This program is a dice game
 ***************************************************************/
 
 #include <iostream>
@@ -16,10 +27,27 @@ class Die
 {
 public:
 	static const int NUM_SIDES;
+	/************************
+	*Die()
+	*This is a constructer that 
+	*creates the die class
+	************************/
 	Die();
+	
+	/************************
+	*void roll();
+	*This method changes the number
+	*stored in the Die class
+	************************/
 	void roll();
+	
+	/************************
+	*int getValue();
+	*This method gets the current number
+	*stored in the Die class
+	*return: int stored in the Die class
+	************************/
   	int getValue();
-
 
 private:
   int val;
@@ -29,10 +57,48 @@ private:
 class Renderer
 {
 public:
+	/************************
+	*Renderer()
+	*This is the constructer for 
+	*the renderer class
+	************************/
 	Renderer();
+	
+	/************************
+	*void clear();
+	*This method clears all changes made to the base
+	*template
+	************************/
 	void clear();
-	void write(int,int,char [],int);
-	void draw(int,int,char [],int,int);
+	
+	/************************
+	*void write(int,int,const char [],int);
+	*This method writes single lines to the rendering template
+	*Params:
+	*		int - X position
+	*		int - Y position
+	*		const char [] - what is being written
+	*		int - lenght of input array
+	************************/
+	void write(int,int,const char [],int);
+	
+	/************************
+	*void draw(int,int,const char [],int,int);
+	*This method draws a 2D ascii image
+	*Params:
+	*		int - X position
+	*		int - Y position
+	*		const char [] - what is being written
+	*		int - width of image
+	*		int - total chars in image
+	************************/
+	void draw(int,int,const char [],int,int);
+	
+	/************************
+	*void render();
+	*THis method prints out the base template will all changes 
+	*since last clear call
+	************************/
 	void render();
 private:
 	char blank[60 * 15];
@@ -54,7 +120,10 @@ int main()
 	
 	
 	//animation array, this was shorteded to var "a" for easy use
-	int a[20][2] = {{5,9},{7,7},{9,4},{11,2},{13,2},{15,4},{17,6},{19,9},{21,8},{23,7},{25,6},{27,5},{29,4},{31,5},{33,6},{35,7},{37,8},{39,9},{41,9},{42,9}};
+	int a[20][2] = {{5,9},{7,7},{9,4},{11,2},{13,2},
+					{15,4},{17,6},{19,9},{21,8},{23,7},
+					{25,6},{27,5},{29,4},{31,5},{33,6},
+					{35,7},{37,8},{39,9},{41,9},{42,9}};
 	
 	
 	//var setup
@@ -193,11 +262,11 @@ void Renderer::clear(){
 		rend[i] = blank[i];
 	system("cls");
 }
-void Renderer::write(int x,int y,char a[],int len){
+void Renderer::write(int x,int y,const char a[],int len){
 	for(int i = 0; i < len;i++)
 		rend[(y * 60)+x+i] = a[i];
 }
-void Renderer::draw(int x,int y,char  a[],int width,int len){
+void Renderer::draw(int x,int y,const char  a[],int width,int len){
 	int y1 = y-1;
 	int x1 = x;
 	for(int i = 0; i < len;i++){
@@ -210,7 +279,7 @@ void Renderer::render(){
 	for(int i = 0; i < 60*15; i ++){
 		if( (i%60) == 0)
 			cout<<endl;
-		printf("%c", rend[i]);
+		printf("%c", rend[i]);//printf is used for speed
 		
 	}
 }

@@ -3,10 +3,10 @@ CSCI 240         Program 8   Spring 2016
 
 Programmer: Alex Boyle
 
-Section: 0007
+Section: 0008
 
-Date Due: April 1 2016 
-Purpose: This program picks lottery tickets
+Date Due: April 22 2016 
+Purpose: This program displays employee info
 ***************************************************************/
 #include <iostream>
 #include <iomanip>
@@ -21,15 +21,83 @@ class Employee
 {
 public:
   Employee();
+  /**
+  *Employee( const char [], int, double )
+  *
+  *This is a constructer for the Employee class
+  *
+  *Params
+  *		char[]: Employee name
+  *		int: employee ID
+  *		double: Employee wage
+  *
+  *Return nothing
+  */
   Employee( const char [], int, double );
-    
+    /**
+  * void printEmp();
+  *
+  *This prints all the data stored in employee
+  *
+  *
+  */
   void printEmp();
+  /**
+  *void increaseSalary( double );
+  *
+  *This adds to an employees salery
+  *
+  *Params
+  *		
+  *		double: Employee wage increese 
+  *
+  *Return nothing
+  */
   void increaseSalary( double );
-
+  
+	/**
+  *void setIDnum( int );
+  *
+  *This adds to an employees salery
+  *
+  *Params
+  *		
+  *		int: set an employees ID
+  *
+  *Return nothing
+  */
   void setIDnum( int );
+  	/**
+  * void setSalary( double );
+  *
+  *This adds to an employees salery
+  *
+  *Params
+  *		
+  *		double: set an employees salary
+  *
+  *Return nothing
+  */
   void setSalary( double );
-
+/**
+  *  int getIDnum();
+  *
+  *This gets an employees ID
+  *
+  
+  *
+  *Return employee ID
+  */
   int getIDnum();
+  /**
+  *  double getSalary();
+  *
+  *This gets an employees salary
+  *
+  
+  *
+  *Return employee salary
+  */
   double getSalary();
 
 private:
